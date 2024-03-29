@@ -164,8 +164,10 @@ vim.keymap.set('n', '<leader>h', vim.cmd.split)
 -- set jj to esc
 vim.keymap.set('i', 'jj', '<Esc>')
 
--- set leader w to save the file
+-- save/quit keys
 vim.keymap.set('n', '<leader>w', vim.cmd.w)
+vim.keymap.set('n', '<leader>wq', vim.cmd.wq)
+vim.keymap.set('n', '<leader>qq', vim.cmd.q)
 
 -- L to the end of the line
 vim.keymap.set({ 'n', 'v' }, 'L', '$')
