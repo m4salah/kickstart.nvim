@@ -14,9 +14,6 @@ return {
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
 
-  -- undo tree
-  'mbbill/undotree',
-
   -- indent blankline
   { 'lukas-reineke/indent-blankline.nvim', main = 'ibl', opts = {} },
 
