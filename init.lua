@@ -175,9 +175,6 @@ vim.keymap.set({ 'n', 'v' }, 'L', '$')
 -- H to the begining of the line
 vim.keymap.set({ 'n', 'v' }, 'H', '^')
 
--- leader u to toggle undo tree
-vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
-
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
