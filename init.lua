@@ -157,6 +157,10 @@ vim.opt.scrolloff = 10
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
+-- split keys
+vim.keymap.set('n', '<leader>v', vim.cmd.vsplit)
+vim.keymap.set('n', '<leader>h', vim.cmd.split)
+
 -- set jj to esc
 vim.keymap.set('i', 'jj', '<Esc>')
 
