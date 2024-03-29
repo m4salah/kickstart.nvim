@@ -16,6 +16,10 @@ return { -- Collection of various small independent plugins/modules
     -- - sr)'  - [S]urround [R]eplace [)] [']
     require('mini.surround').setup()
 
+    -- mini paris
+    -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-pairs.md
+    require('mini.pairs').setup()
+
     -- Simple and easy statusline.
     --  You could remove this setup call if you don't like it,
     --  and try some other statusline plugin
