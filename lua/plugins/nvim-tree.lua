@@ -7,5 +7,8 @@ return { -- nvim tree
   },
   config = function()
     require('nvim-tree').setup {}
+
+    -- leader n to toggle nvim tree
+    vim.keymap.set('n', '<C-n>', vim.cmd.NvimTreeToggle)
   end,
 }

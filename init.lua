@@ -178,9 +178,6 @@ vim.keymap.set({ 'n', 'v' }, 'H', '^')
 -- leader u to toggle undo tree
 vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
 
--- leader n to toggle nvim tree
-vim.keymap.set('n', '<C-n>', vim.cmd.NvimTreeToggle)
-
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
