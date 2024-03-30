@@ -157,6 +157,11 @@ vim.opt.scrolloff = 10
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
+-- buffer navigating
+vim.keymap.set('n', '<leader>n', vim.cmd.bn)
+vim.keymap.set('n', '<leader>p', vim.cmd.bp)
+vim.keymap.set('n', '<leader>x', vim.cmd.bd)
+
 -- split keys
 vim.keymap.set('n', '<leader>v', vim.cmd.vsplit)
 vim.keymap.set('n', '<leader>h', vim.cmd.split)
