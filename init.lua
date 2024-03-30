@@ -167,6 +167,7 @@ vim.keymap.set('i', 'jj', '<Esc>')
 -- save/quit keys
 vim.keymap.set('n', '<leader>w', vim.cmd.w)
 vim.keymap.set('n', '<leader>wq', vim.cmd.wq)
+vim.keymap.set('n', '<leader>wqa', vim.cmd.wqa)
 vim.keymap.set('n', '<leader>qq', vim.cmd.q)
 
 -- L to the end of the line
