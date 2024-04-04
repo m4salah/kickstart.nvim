@@ -23,6 +23,12 @@ return { -- Autoformat
       -- markdown
       markdown = { 'markdownlint' },
 
+      -- terraform
+      terraform = { 'terraform_fmt' },
+
+      -- terragrun
+      hcl = { 'terragrunt_hclfmt' },
+
       -- java/typescript prettier
       javascript = { { 'prettierd', 'prettier' } },
       typescript = { { 'prettierd', 'prettier' } },
