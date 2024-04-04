@@ -150,7 +150,10 @@ return { -- LSP Configuration & Plugins
       cssls = {},
       somesass_ls = {},
       stylelint_lsp = {},
-      --
+      cssmodules_ls = {},
+      terraformls = {},
+      tflint = {},
+      eslint = {},
       lua_ls = {
         -- cmd = {...},
         -- filetypes = { ...},
@@ -187,6 +190,11 @@ return { -- LSP Configuration & Plugins
       'cssls',
       'somesass_ls',
       'stylelint_lsp',
+      'terraformls',
+      'tflint',
+      'eslint',
+      'cssmodules_ls',
+      'css-variables-language-server',
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
