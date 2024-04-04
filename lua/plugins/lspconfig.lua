@@ -147,8 +147,10 @@ return { -- LSP Configuration & Plugins
       -- But for many setups, the LSP (`tsserver`) will work just fine
       tsserver = {},
       tailwindcss = {},
+      cssls = {},
+      somesass_ls = {},
+      stylelint_lsp = {},
       --
-
       lua_ls = {
         -- cmd = {...},
         -- filetypes = { ...},
@@ -182,6 +184,9 @@ return { -- LSP Configuration & Plugins
       'rust_analyzer',
       'tsserver',
       'tailwindcss',
+      'cssls',
+      'somesass_ls',
+      'stylelint_lsp',
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
