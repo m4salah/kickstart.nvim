@@ -23,6 +23,7 @@ return { -- Highlight, edit, and navigate code
       'hcl',
       'yaml',
       'toml',
+      'scss',
     },
     -- Autoinstall languages that are not installed
     auto_install = true,
