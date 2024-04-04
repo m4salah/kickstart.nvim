@@ -22,6 +22,7 @@ return { -- Autoformat
       --
       -- markdown
       markdown = { 'markdownlint' },
+      proto = { 'buf' },
 
       -- terraform
       terraform = { 'terraform_fmt' },
