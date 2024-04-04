@@ -1,7 +1,19 @@
 return { -- Linting
   'mfussenegger/nvim-lint',
   event = { 'BufReadPre', 'BufNewFile' },
+  dependencies = {
+    -- Automatically install LSPs and related tools to stdpath for Neovim
+    'WhoIsSethDaniel/mason-tool-installer.nvim',
+  },
   config = function()
+    -- install required lint by mason
+    local ensure_installed = {
+      'eslint_d',
+      'tflint',
+      'markdownlint',
+    }
+    require('mason-tool-installer').setup { ensure_installed = ensure_installed }
+
     local lint = require 'lint'
     lint.linters_by_ft = {
       markdown = { 'markdownlint' },
