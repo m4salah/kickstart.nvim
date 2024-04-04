@@ -22,6 +22,7 @@ return { -- Highlight, edit, and navigate code
       'terraform',
       'hcl',
       'yaml',
+      'toml',
     },
     -- Autoinstall languages that are not installed
     auto_install = true,
