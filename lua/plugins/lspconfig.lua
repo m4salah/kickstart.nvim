@@ -157,6 +157,7 @@ return { -- LSP Configuration & Plugins
       bufls = {},
       buf = {},
       protolint = {},
+      taplo = {},
       lua_ls = {
         -- cmd = {...},
         -- filetypes = { ...},
@@ -198,6 +199,7 @@ return { -- LSP Configuration & Plugins
       'css-variables-language-server',
       'bufls',
       'buf',
+      'taplo',
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

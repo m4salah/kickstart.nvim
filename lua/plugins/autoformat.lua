@@ -22,6 +22,8 @@ return { -- Autoformat
       --
       -- markdown
       markdown = { 'markdownlint' },
+
+      -- protobuf files
       proto = { 'buf' },
 
       -- terraform
@@ -29,6 +31,9 @@ return { -- Autoformat
 
       -- terragrun
       hcl = { 'terragrunt_hclfmt' },
+
+      -- toml
+      toml = { 'taplo' },
 
       -- java/typescript prettier
       javascript = { { 'prettierd', 'prettier' } },
