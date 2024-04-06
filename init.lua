@@ -169,13 +169,13 @@ vim.keymap.set('n', '<C-u>', '<C-u>zz')
 vim.keymap.set('x', '<leader>p', '"_dp')
 
 -- buffer navigating
-vim.keymap.set('n', '<leader>n', vim.cmd.bn)
-vim.keymap.set('n', '<leader>p', vim.cmd.bp)
-vim.keymap.set('n', '<leader>x', vim.cmd.bd)
+vim.keymap.set('n', '<leader>n', vim.cmd.bn, { desc = '[N]ext buffer' })
+vim.keymap.set('n', '<leader>p', vim.cmd.bp, { desc = '[P]revious buffer' })
+vim.keymap.set('n', '<leader>x', vim.cmd.bd, { desc = 'E[X]it/Kill buffer' })
 
 -- split keys
-vim.keymap.set('n', '<leader>v', vim.cmd.vsplit)
-vim.keymap.set('n', '<leader>h', vim.cmd.split)
+vim.keymap.set('n', '<leader>v', vim.cmd.vsplit, { desc = '[V]ertical Split' })
+vim.keymap.set('n', '<leader>h', vim.cmd.split, { desc = '[H]orizontal Split' })
 
 -- set jj to esc
 vim.keymap.set('i', 'jj', '<Esc>')
