@@ -157,6 +157,17 @@ vim.opt.scrolloff = 10
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
+-- in visual mode move the current selected up or down
+vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
+vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
+
+-- when scroll half page keep the cursor in the middle
+vim.keymap.set('n', '<C-d>', '<C-d>zz')
+vim.keymap.set('n', '<C-u>', '<C-u>zz')
+
+-- leader p for pasting over selected item but don't override the clipboard
+vim.keymap.set('x', '<leader>p', '"_dp')
+
 -- buffer navigating
 vim.keymap.set('n', '<leader>n', vim.cmd.bn)
 vim.keymap.set('n', '<leader>p', vim.cmd.bp)
