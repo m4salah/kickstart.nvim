@@ -25,6 +25,7 @@ return { -- Highlight, edit, and navigate code
       'toml',
       'scss',
       'rust',
+      'templ',
     },
     -- Autoinstall languages that are not installed
     auto_install = true,

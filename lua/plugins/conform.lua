@@ -35,14 +35,21 @@ return { -- Autoformat
       -- toml
       toml = { 'taplo' },
 
+      -- yaml
+      yaml = { 'yamlfmt' },
+
       -- golang
       go = { 'goimports', 'gofmt', 'golines' },
+      templ = { 'templ' },
 
       -- java/typescript prettier
       javascript = { { 'prettierd', 'prettier' } },
       typescript = { { 'prettierd', 'prettier' } },
       javascriptreact = { { 'prettierd', 'prettier' } },
       typescriptreact = { { 'prettierd', 'prettier' } },
+
+      -- sql
+      sql = { 'sql_formatter' },
     },
   },
 }

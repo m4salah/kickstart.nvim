@@ -139,6 +139,10 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+-- add support to templ file type
+-- https://templ.guide/commands-and-tools/ide-support/#neovim--050
+vim.filetype.add { extension = { templ = 'templ' } }
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -197,3 +201,6 @@ require('lazy').setup('plugins', {
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+vim.opt.ts = 4
+vim.opt.sw = 4
+vim.opt.sts = 2

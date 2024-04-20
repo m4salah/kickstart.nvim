@@ -168,6 +168,7 @@ return { -- LSP Configuration & Plugins
       buf = {},
       protolint = {},
       taplo = {},
+      templ = {},
       lua_ls = {
         -- cmd = {...},
         -- filetypes = { ...},
@@ -212,6 +213,12 @@ return { -- LSP Configuration & Plugins
       'taplo',
       'goimports',
       'golines',
+      'templ',
+      'html',
+      'yamlfmt',
+      'yamlls',
+      'sqlfmt',
+      'sqls',
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
