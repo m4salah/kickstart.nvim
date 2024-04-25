@@ -43,6 +43,7 @@ return { -- Autoformat
       templ = { 'templ' },
 
       -- java/typescript prettier
+      json = { 'prettierd', 'prettier' },
       javascript = { { 'prettierd', 'prettier' } },
       typescript = { { 'prettierd', 'prettier' } },
       javascriptreact = { { 'prettierd', 'prettier' } },

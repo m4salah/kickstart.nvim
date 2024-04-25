@@ -169,6 +169,14 @@ return { -- LSP Configuration & Plugins
       protolint = {},
       taplo = {},
       templ = {},
+      yamlls = {
+        format = {
+          enable = true,
+        },
+        schemaStore = {
+          enable = true,
+        },
+      },
       lua_ls = {
         -- cmd = {...},
         -- filetypes = { ...},
