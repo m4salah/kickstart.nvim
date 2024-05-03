@@ -44,6 +44,7 @@ return { -- Autoformat
 
       -- java/typescript prettier
       json = { 'prettierd', 'prettier' },
+      htmldjango = { 'djlint' },
       javascript = { { 'prettierd', 'prettier' } },
       typescript = { { 'prettierd', 'prettier' } },
       javascriptreact = { { 'prettierd', 'prettier' } },

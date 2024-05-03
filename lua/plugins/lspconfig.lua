@@ -140,7 +140,6 @@ return { -- LSP Configuration & Plugins
         settings = {
           gopls = {
             completeUnimported = true,
-            usePlaceholders = true,
             analyses = {
               unusedparams = true,
             },
@@ -176,6 +175,9 @@ return { -- LSP Configuration & Plugins
         schemaStore = {
           enable = true,
         },
+      },
+      html = {
+        filetypes = { 'html', 'htmldjango' },
       },
       lua_ls = {
         -- cmd = {...},
