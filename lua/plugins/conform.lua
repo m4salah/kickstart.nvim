@@ -36,7 +36,7 @@ return { -- Autoformat
       toml = { 'taplo' },
 
       -- yaml
-      yaml = { 'yamlfmt' },
+      yaml = { 'yamlls' },
 
       -- golang
       go = { 'goimports', 'gofmt', 'golines' },
