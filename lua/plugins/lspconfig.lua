@@ -173,9 +173,7 @@ return { -- LSP Configuration & Plugins
           yaml = {
             validate = true,
             schemas = {
-              ['https://raw.githubusercontent.com/quantumblacklabs/kedro/develop/static/jsonschema/kedro-catalog-0.17.json'] = 'conf/**/*catalog*',
-              ['https://json.schemastore.org/github-workflow.json'] = '/.github/workflows/*',
-              ['https://s3.amazonaws.com/cfn-resource-specifications-us-east-1-prod/schemas/2.15.0/all-spec.json'] = 'cloudformation*.{yml,yaml}',
+              ['https://json.schemastore.org/github-workflow.json'] = '.github/workflows/*',
               ['https://raw.githubusercontent.com/docker/compose/master/compose/config/compose_spec.json'] = 'docker-compose*.{yml,yaml}',
             },
             format = {
@@ -185,6 +183,11 @@ return { -- LSP Configuration & Plugins
               enable = false,
               url = '',
             },
+          },
+        },
+        capabilities = {
+          resolved_capabilities = {
+            document_formatting = true,
           },
         },
       },
@@ -256,10 +259,5 @@ return { -- LSP Configuration & Plugins
         end,
       },
     }
-    local on_attach = function(client, buffer)
-      if client.name == 'yamlls' then
-        client.resolved_capabilities.document_formatting = true
-      end
-    end
   end,
 }
