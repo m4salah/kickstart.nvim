@@ -11,9 +11,9 @@ return {
   },
   cmd = 'Neotree',
   keys = {
-    { '<C-n>', ':Neotree float<CR>', { desc = 'NeoTree reveal' } },
+    { '<C-n>', ':Neotree filesystem reveal float<CR>', { desc = 'NeoTree reveal' } },
   },
-
+  buffers = { follow_current_file = { enabled = true } },
   opts = {
     filesystem = {
       hijack_netrw_behavior = 'open_current',
