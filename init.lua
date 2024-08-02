@@ -85,6 +85,7 @@ vim.keymap.set('x', '<leader>p', '"_dp')
 vim.keymap.set('n', '<leader>n', vim.cmd.bn, { desc = '[N]ext buffer' })
 vim.keymap.set('n', '<leader>p', vim.cmd.bp, { desc = '[P]revious buffer' })
 vim.keymap.set('n', '<leader>x', vim.cmd.bd, { desc = 'E[X]it/Kill buffer' })
+vim.keymap.set('n', '<leader><leader>', '<c-^>', { desc = 'Switch between recent two buffers' })
 
 -- split keys
 vim.keymap.set('n', '<leader>v', vim.cmd.vsplit, { desc = '[V]ertical Split' })
