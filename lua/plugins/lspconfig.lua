@@ -127,8 +127,6 @@ return { -- LSP Configuration & Plugins
           })
         end
 
-        -- organizeImports
-        vim.lsp.buf.execute_command { command = '_typescript.organizeImports', arguments = { vim.fn.expand '%:p' } }
         -- The following autocommand is used to enable inlay hints in your
         -- code, if the language server you are using supports them
         --
@@ -158,13 +156,17 @@ return { -- LSP Configuration & Plugins
     --  - settings (table): Override the default settings passed when initializing the server.
     --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 
-    local function organize_imports()
+    local function ts_organize_imports()
+      -- Organize Imports.
       local params = {
         command = '_typescript.organizeImports',
         arguments = { vim.api.nvim_buf_get_name(0) },
         title = '',
       }
       vim.lsp.buf.execute_command(params)
+
+      -- format the buffer.
+      vim.lsp.buf.format()
     end
 
     local servers = {
@@ -188,9 +190,16 @@ return { -- LSP Configuration & Plugins
       --
       -- But for many setups, the LSP (`tsserver`) will work just fine
       tsserver = {
+        on_attach = function(client, bufnr)
+          -- Use conform.nvim for organizing imports and fixing code on save
+          vim.api.nvim_create_autocmd('BufWritePre', {
+            buffer = bufnr,
+            callback = ts_organize_imports,
+          })
+        end,
         commands = {
           OrganizeImports = {
-            organize_imports,
+            ts_organize_imports,
             description = 'Organize Imports',
           },
         },
