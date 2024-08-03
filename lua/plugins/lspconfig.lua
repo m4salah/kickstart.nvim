@@ -127,6 +127,8 @@ return { -- LSP Configuration & Plugins
           })
         end
 
+        -- organizeImports
+        vim.lsp.buf.execute_command { command = '_typescript.organizeImports', arguments = { vim.fn.expand '%:p' } }
         -- The following autocommand is used to enable inlay hints in your
         -- code, if the language server you are using supports them
         --
@@ -155,6 +157,16 @@ return { -- LSP Configuration & Plugins
     --  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
     --  - settings (table): Override the default settings passed when initializing the server.
     --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
+
+    local function organize_imports()
+      local params = {
+        command = '_typescript.organizeImports',
+        arguments = { vim.api.nvim_buf_get_name(0) },
+        title = '',
+      }
+      vim.lsp.buf.execute_command(params)
+    end
+
     local servers = {
       -- clangd = {},
       gopls = {
@@ -175,7 +187,14 @@ return { -- LSP Configuration & Plugins
       --    https://github.com/pmizio/typescript-tools.nvim
       --
       -- But for many setups, the LSP (`tsserver`) will work just fine
-      tsserver = {},
+      tsserver = {
+        commands = {
+          OrganizeImports = {
+            organize_imports,
+            description = 'Organize Imports',
+          },
+        },
+      },
       tailwindcss = {},
       cssls = {},
       somesass_ls = {},
