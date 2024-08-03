@@ -108,6 +108,17 @@ return { -- Highlight, edit, and navigate code
     ---@diagnostic disable-next-line: missing-fields
     require('nvim-treesitter.configs').setup(opts)
 
+    local ts_repeat_move = require 'nvim-treesitter.textobjects.repeatable_move'
+
+    -- Repeat movement with ; and ,
+    -- ensure ; goes forward and , goes backward regardless of the last direction
+    vim.keymap.set({ 'n', 'x', 'o' }, ';', ts_repeat_move.repeat_last_move_next)
+
+    -- Optionally, make builtin f, F, t, T also repeatable with ; and ,
+    vim.keymap.set({ 'n', 'x', 'o' }, 'f', ts_repeat_move.builtin_f_expr, { expr = true, silent = true })
+    vim.keymap.set({ 'n', 'x', 'o' }, 'F', ts_repeat_move.builtin_F_expr, { expr = true, silent = true })
+    vim.keymap.set({ 'n', 'x', 'o' }, 't', ts_repeat_move.builtin_t_expr, { expr = true, silent = true })
+    vim.keymap.set({ 'n', 'x', 'o' }, 'T', ts_repeat_move.builtin_T_expr, { expr = true, silent = true })
     -- There are additional nvim-treesitter modules that you can use to interact
     -- with nvim-treesitter. You should go explore a few and see what interests you:
     --
