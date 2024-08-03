@@ -20,8 +20,8 @@ keymap.set('n', '<C-u>', '<C-u>zz', opts)
 keymap.set('x', '<leader>p', '"_dp', opts)
 
 -- buffer navigating
-keymap.set('n', '<leader>n', vim.cmd.bn, { desc = '[N]ext buffer' })
-keymap.set('n', '<leader>p', vim.cmd.bp, { desc = '[P]revious buffer' })
+keymap.set('n', '<Tab>', vim.cmd.bn, { desc = '[N]ext buffer' })
+keymap.set('n', '<S-Tab>', vim.cmd.bp, { desc = '[P]revious buffer' })
 keymap.set('n', '<leader>x', vim.cmd.bd, { desc = 'E[X]it/Kill buffer' })
 keymap.set('n', '<leader><leader>', '<c-^>', { desc = 'Switch between recent two buffers' })
 
