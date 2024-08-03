@@ -40,32 +40,6 @@ return { -- Highlight, edit, and navigate code
       additional_vim_regex_highlighting = { 'ruby' },
     },
     indent = { enable = true, disable = { 'ruby' } },
-    autotag = {
-      enable = true,
-      enable_rename = true,
-      enable_close = true,
-      enable_close_on_slash = true,
-      filetypes = {
-        'html',
-        'htmldjango',
-        'javascript',
-        'typescript',
-        'javascriptreact',
-        'typescriptreact',
-        'svelte',
-        'vue',
-        'tsx',
-        'jsx',
-        'rescript',
-        'xml',
-        'php',
-        'markdown',
-        'astro',
-        'glimmer',
-        'handlebars',
-        'hbs',
-      },
-    },
     incremental_selection = {
       enable = true,
       keymaps = {
@@ -126,9 +100,6 @@ return { -- Highlight, edit, and navigate code
     },
   },
   dependencies = {
-    -- install auto tags
-    -- https://github.com/windwp/nvim-ts-autotag
-    'windwp/nvim-ts-autotag',
     'nvim-treesitter/nvim-treesitter-textobjects',
   },
   config = function(_, opts)
