@@ -164,9 +164,6 @@ return { -- LSP Configuration & Plugins
         title = '',
       }
       vim.lsp.buf.execute_command(params)
-
-      -- format the buffer.
-      vim.lsp.buf.format()
     end
 
     local servers = {
@@ -190,13 +187,6 @@ return { -- LSP Configuration & Plugins
       --
       -- But for many setups, the LSP (`tsserver`) will work just fine
       tsserver = {
-        on_attach = function(client, bufnr)
-          -- Use conform.nvim for organizing imports and fixing code on save
-          vim.api.nvim_create_autocmd('BufWritePre', {
-            buffer = bufnr,
-            callback = ts_organize_imports,
-          })
-        end,
         commands = {
           OrganizeImports = {
             ts_organize_imports,
