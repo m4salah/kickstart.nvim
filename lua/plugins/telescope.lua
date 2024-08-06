@@ -46,6 +46,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
     -- See `:help telescope` and `:help telescope.setup()`
 
     local actions = require 'telescope.actions'
+
     require('telescope').setup {
       -- You can put your default mappings / updates / etc. in here
       --  All the info you're looking for is in `:help telescope.setup()`
@@ -92,9 +93,13 @@ return { -- Fuzzy Finder (files, lsp, etc)
     vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
     vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
     vim.keymap.set('n', '<leader>sb', builtin.buffers, { desc = '[B] Find existing buffers' })
+
     -- git worktree commands
     vim.keymap.set('n', '<Leader>sr', "<CMD>lua require('telescope').extensions.git_worktree.git_worktrees()<CR>")
     vim.keymap.set('n', '<Leader>sR', "<CMD>lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>")
+
+    -- search todos
+    vim.keymap.set('n', '<leader>st', '<CMD>TodoTelescope<CR>', { desc = '[S] [T]odos' })
 
     -- Slightly advanced example of overriding default behavior and theme
     vim.keymap.set('n', '<leader>/', function()
