@@ -2,6 +2,9 @@ return { -- Highlight, edit, and navigate code
   'nvim-treesitter/nvim-treesitter',
   build = ':TSUpdate',
   opts = {
+    injections = {
+      enable = true,
+    },
     ensure_installed = {
       'diff',
       'bash',
