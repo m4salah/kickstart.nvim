@@ -15,9 +15,28 @@ return {
         update_focused_file = {
           enable = true,
         },
+        disable_netrw = true,
+        hijack_netrw = true,
+        respect_buf_cwd = true,
+        sync_root_with_cwd = true,
         actions = {
           open_file = {
             quit_on_open = true,
+          },
+        },
+        view = {
+          relativenumber = true,
+          float = {
+            enable = true,
+            quit_on_focus_loss = true,
+            open_win_config = {
+              relative = 'editor',
+              border = 'rounded',
+              width = 50,
+              height = 50,
+              row = 1,
+              col = 1,
+            },
           },
         },
       }
