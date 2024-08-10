@@ -11,8 +11,11 @@ return {
       'nvim-tree/nvim-web-devicons',
     },
     config = function()
+      -- use mini icons
       require('mini.icons').setup()
       MiniIcons.mock_nvim_web_devicons()
+
+      -- setup nvim tree
       require('nvim-tree').setup {
         update_focused_file = {
           enable = true,
