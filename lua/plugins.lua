@@ -12,6 +12,7 @@ return {
   --    require('Comment').setup({})
 
   -- "gc" to comment visual regions/lines
+  -- "gcc" toggle comment line
   { 'numToStr/Comment.nvim', opts = {} },
 
   -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
