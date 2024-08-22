@@ -9,27 +9,27 @@ local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 
 -- Better j, k, Move by line
-vim.keymap.set('n', 'j', 'gj', opts)
-vim.keymap.set('n', 'k', 'gk', opts)
+keymap.set('n', 'j', 'gj', opts)
+keymap.set('n', 'k', 'gk', opts)
 
 -- in visual mode move the current selected up or down
 keymap.set('v', 'J', ":m '>+1<CR>gv=gv", opts)
 keymap.set('v', 'K', ":m '<-2<CR>gv=gv", opts)
 
 -- Better indentation in visual mode (keep selection)
-vim.keymap.set('v', '<', '<gv', opts)
-vim.keymap.set('v', '>', '>gv', opts)
+keymap.set('v', '<', '<gv', opts)
+keymap.set('v', '>', '>gv', opts)
 
 -- when moving to the next
-vim.keymap.set('n', 'n', 'nzzzv', opts)
-vim.keymap.set('n', 'N', 'Nzzzv', opts)
+keymap.set('n', 'n', 'nzzzv', opts)
+keymap.set('n', 'N', 'Nzzzv', opts)
 
 -- when scroll half page keep the cursor in the middle
 keymap.set('n', '<C-d>', '<C-d>zz', opts)
 keymap.set('n', '<C-u>', '<C-u>zz', opts)
 
 -- <leader>p to paste over highlighted but keep register buffer
-vim.keymap.set('x', '<leader>p', '"_dP')
+keymap.set('x', '<leader>p', '"_dP')
 
 -- buffer navigating
 -- keymap.set('n', '<Tab>', vim.cmd.bn, { desc = '[N]ext buffer' })
