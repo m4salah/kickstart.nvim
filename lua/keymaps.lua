@@ -20,8 +20,8 @@ vim.keymap.set('n', 'N', 'Nzzzv', opts)
 keymap.set('n', '<C-d>', '<C-d>zz', opts)
 keymap.set('n', '<C-u>', '<C-u>zz', opts)
 
--- leader p for pasting over selected item but don't override the clipboard
-keymap.set('x', '<leader>p', '"_dp', opts)
+-- <leader>p to paste over highlighted but keep register buffer
+vim.keymap.set('x', '<leader>p', '"_dP')
 
 -- buffer navigating
 -- keymap.set('n', '<Tab>', vim.cmd.bn, { desc = '[N]ext buffer' })
