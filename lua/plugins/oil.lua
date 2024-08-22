@@ -4,7 +4,21 @@ return {
   -- Optional dependencies
   dependencies = { { 'echasnovski/mini.icons', opts = {} } },
   config = function()
-    require('oil').setup()
-    vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
+    require('oil').setup {
+      view_options = {
+        show_hidden = true,
+      },
+      float = {
+        max_width = 80,
+        max_height = 60,
+      },
+      skip_confirm_for_simple_edits = true,
+      keymaps = {
+        ['-'] = 'actions.open_cwd',
+        ['_'] = 'actions.parent',
+        ['q'] = 'actions.close',
+      },
+    }
+    vim.keymap.set('n', '-', '<CMD>Oil --float<CR>', { desc = 'Open parent directory' })
   end,
 }
