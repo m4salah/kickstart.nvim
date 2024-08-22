@@ -8,6 +8,10 @@ local keymap = vim.keymap
 
 local opts = { noremap = true, silent = true }
 
+-- Better j, k, Move by line
+vim.keymap.set('n', 'j', 'gj', opts)
+vim.keymap.set('n', 'k', 'gk', opts)
+
 -- in visual mode move the current selected up or down
 keymap.set('v', 'J', ":m '>+1<CR>gv=gv", opts)
 keymap.set('v', 'K', ":m '<-2<CR>gv=gv", opts)
