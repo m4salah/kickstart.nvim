@@ -32,6 +32,7 @@ return { -- Highlight, edit, and navigate code
       'rust',
       'templ',
       'htmldjango',
+      'astro',
     },
     -- Autoinstall languages that are not installed
     auto_install = true,

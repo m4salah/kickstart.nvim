@@ -287,6 +287,7 @@ return { -- LSP Configuration & Plugins
       'yamlls',
       'sqlfmt',
       'sqls',
+      'astro',
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
