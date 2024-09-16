@@ -33,6 +33,7 @@ return { -- Highlight, edit, and navigate code
       'templ',
       'htmldjango',
       'astro',
+      'prisma',
     },
     -- Autoinstall languages that are not installed
     auto_install = true,

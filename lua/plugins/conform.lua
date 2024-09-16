@@ -60,6 +60,9 @@ return { -- Autoformat
 
       -- sql
       sql = { 'sql_formatter' },
+
+      -- prisma
+      prisma = { 'prismaFmt' },
     },
   },
 }
