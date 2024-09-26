@@ -190,7 +190,7 @@ return { -- LSP Configuration & Plugins
       --    https://github.com/pmizio/typescript-tools.nvim
       --
       -- But for many setups, the LSP (`tsserver`) will work just fine
-      tsserver = {
+      ts_ls = {
         commands = {
           OrganizeImports = {
             ts_organize_imports,
@@ -268,7 +268,7 @@ return { -- LSP Configuration & Plugins
       'stylua', -- Used to format Lua code
       'gopls',
       'rust_analyzer',
-      'tsserver',
+      'ts_ls',
       'tailwindcss',
       'cssls',
       'somesass_ls',
@@ -294,9 +294,6 @@ return { -- LSP Configuration & Plugins
     require('mason-lspconfig').setup {
       handlers = {
         function(server_name)
-          if server_name == 'tsserver' then
-            server_name = 'ts_ls'
-          end
           local server = servers[server_name] or {}
           -- This handles overriding only values explicitly passed
           -- by the server configuration above. Useful when disabling
