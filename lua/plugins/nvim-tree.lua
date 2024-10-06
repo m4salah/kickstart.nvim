@@ -12,8 +12,8 @@ return {
     },
     config = function()
       -- use mini icons
-      -- require('mini.icons').setup()
-      -- MiniIcons.mock_nvim_web_devicons()
+      require('mini.icons').setup()
+      MiniIcons.mock_nvim_web_devicons()
 
       -- setup nvim tree
       require('nvim-tree').setup {
