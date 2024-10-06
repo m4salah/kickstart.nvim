@@ -16,6 +16,28 @@ return { -- Collection of various small independent plugins/modules
     -- - sr)'  - [S]urround [R]eplace [)] [']
     require('mini.surround').setup()
 
+    -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-indentscope.md
+    require('mini.indentscope').setup()
+
+    -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-pairs.md
+    require('mini.pairs').setup()
+
+    -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-sessions.md
+    require('mini.sessions').setup()
+
+    -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-starter.md
+    require('mini.starter').setup()
+
+    -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-tabline.md
+    require('mini.tabline').setup()
+
+    -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-bracketed.md
+    require('mini.bracketed').setup()
+
+    -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-files.md
+    require('mini.files').setup()
+    vim.keymap.set('n', '<leader>ff', '<CMD>lua MiniFiles.open()<CR>')
+
     -- Simple and easy statusline.
     --  You could remove this setup call if you don't like it,
     --  and try some other statusline plugin
