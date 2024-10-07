@@ -38,6 +38,9 @@ return { -- Collection of various small independent plugins/modules
     -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-bracketed.md
     require('mini.bracketed').setup()
 
+    -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-diff.md
+    require('mini.diff').setup()
+
     -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-files.md
     require('mini.files').setup()
     vim.keymap.set('n', '<leader>ff', '<CMD>lua MiniFiles.open()<CR>')

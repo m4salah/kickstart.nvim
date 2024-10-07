@@ -23,24 +23,6 @@ return { -- Adds git related signs to the gutter, as well as utilities for manag
         vim.keymap.set(mode, l, r, opts)
       end
 
-      -- Navigation
-      map('n', ']c', function()
-        if vim.wo.diff then
-          vim.cmd.normal { ']c', bang = true }
-        else
-          gitsigns.nav_hunk 'next'
-        end
-      end, { desc = 'Jump to next git [c]hange' })
-
-      map('n', '[c', function()
-        if vim.wo.diff then
-          vim.cmd.normal { '[c', bang = true }
-        else
-          gitsigns.nav_hunk 'prev'
-        end
-      end, { desc = 'Jump to previous git [c]hange' })
-
-      -- Actions
       -- visual mode
       map('v', '<leader>hs', function()
         gitsigns.stage_hunk { vim.fn.line '.', vim.fn.line 'v' }
