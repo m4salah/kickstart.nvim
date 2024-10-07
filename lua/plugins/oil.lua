@@ -14,8 +14,6 @@ return {
       },
       skip_confirm_for_simple_edits = true,
       keymaps = {
-        ['-'] = 'actions.open_cwd',
-        ['_'] = 'actions.parent',
         ['q'] = 'actions.close',
       },
     }
