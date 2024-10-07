@@ -41,6 +41,13 @@ return { -- Collection of various small independent plugins/modules
     -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-diff.md
     require('mini.diff').setup()
 
+    -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-cursorword.md
+    require('mini.cursorword').setup()
+
+    -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-visits.md
+    require('mini.visits').setup()
+    vim.keymap.set('n', '<leader>sp', '<CMD>lua MiniVisits.select_path()<CR>', { desc = '[S]elect [P]ath' })
+
     -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-files.md
     require('mini.files').setup()
     vim.keymap.set('n', '<leader>ff', '<CMD>lua MiniFiles.open()<CR>')
