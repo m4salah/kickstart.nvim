@@ -21,6 +21,12 @@ return { -- Fuzzy Finder (files, lsp, etc)
 
     -- Useful for getting pretty icons, but requires a Nerd Font.
     { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+    {
+      'nvim-telescope/telescope-frecency.nvim',
+      config = function()
+        require('telescope').load_extension 'frecency'
+      end,
+    },
   },
   config = function()
     -- Telescope is a fuzzy finder that comes with a lot of different things that
@@ -95,10 +101,11 @@ return { -- Fuzzy Finder (files, lsp, etc)
     vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
     vim.keymap.set('n', '<leader>sb', builtin.buffers, { desc = '[B] Find existing buffers' })
     vim.keymap.set('n', '<leader>gs', builtin.git_status, { desc = '[G]it [S]tatus' })
+    vim.keymap.set('n', '<leader>sp', '<CMD>Telescope frecency<CR>', { desc = '[S]earch [P]aths' })
 
     -- git worktree commands
-    vim.keymap.set('n', '<Leader>sr', "<CMD>lua require('telescope').extensions.git_worktree.git_worktrees()<CR>")
-    vim.keymap.set('n', '<Leader>sR', "<CMD>lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>")
+    vim.keymap.set('n', '<Leader>sr', "<CMD>lua require('telescope').extensions.git_worktree.git_worktrees()<CR>", { desc = 'List git worktrees' })
+    vim.keymap.set('n', '<Leader>sR', "<CMD>lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>", { desc = 'Create new git worktree' })
 
     -- search todos
     vim.keymap.set('n', '<leader>st', '<CMD>TodoTelescope<CR>', { desc = '[S] [T]odos' })
