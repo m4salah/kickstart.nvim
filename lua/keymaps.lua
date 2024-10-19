@@ -29,7 +29,7 @@ keymap.set('n', '<C-d>', '<C-d>zz', opts)
 keymap.set('n', '<C-u>', '<C-u>zz', opts)
 
 -- <leader>p to paste over highlighted but keep register buffer
-keymap.set('x', '<leader>p', '"_dP')
+keymap.set('x', 'p', '"_dP')
 
 -- buffer navigating
 -- keymap.set('n', '<Tab>', vim.cmd.bn, { desc = '[N]ext buffer' })
@@ -49,10 +49,10 @@ keymap.set('n', '<leader>w', vim.cmd.w, opts)
 keymap.set('n', '<leader>q', vim.cmd.q, opts)
 
 -- L to the end of the line
-keymap.set({ 'n', 'v' }, 'L', '$', opts)
+keymap.set({ 'n', 'v', 'o', 'x' }, 'L', '$', opts)
 
 -- H to the begining of the line
-keymap.set({ 'n', 'v' }, 'H', '^', opts)
+keymap.set({ 'n', 'v', 'o', 'x' }, 'H', '^', opts)
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true

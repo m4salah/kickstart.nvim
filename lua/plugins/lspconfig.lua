@@ -190,14 +190,14 @@ return { -- LSP Configuration & Plugins
       --    https://github.com/pmizio/typescript-tools.nvim
       --
       -- But for many setups, the LSP (`tsserver`) will work just fine
-      ts_ls = {
-        commands = {
-          OrganizeImports = {
-            ts_organize_imports,
-            description = 'Organize Imports',
-          },
-        },
-      },
+      -- ts_ls = {
+      --   commands = {
+      --     OrganizeImports = {
+      --       ts_organize_imports,
+      --       description = 'Organize Imports',
+      --     },
+      --   },
+      -- },
       tailwindcss = {},
       cssls = {},
       somesass_ls = {},
@@ -268,7 +268,7 @@ return { -- LSP Configuration & Plugins
       'stylua', -- Used to format Lua code
       'gopls',
       'rust_analyzer',
-      'ts_ls',
+      -- 'ts_ls',
       'tailwindcss',
       'cssls',
       'somesass_ls',
