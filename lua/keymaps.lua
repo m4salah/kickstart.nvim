@@ -29,7 +29,7 @@ keymap.set('n', '<C-d>', '<C-d>zz', opts)
 keymap.set('n', '<C-u>', '<C-u>zz', opts)
 
 -- <leader>p to paste over highlighted but keep register buffer
-keymap.set('x', 'p', '"_dP')
+keymap.set('x', '<leader>p', '"_dP')
 
 -- buffer navigating
 -- keymap.set('n', '<Tab>', vim.cmd.bn, { desc = '[N]ext buffer' })
