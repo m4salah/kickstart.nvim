@@ -46,7 +46,7 @@ return { -- Collection of various small independent plugins/modules
 
     -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-files.md
     require('mini.files').setup()
-    vim.keymap.set('n', '<leader>ff', '<CMD>lua MiniFiles.open()<CR>')
+    vim.keymap.set('n', '<C-n>', '<CMD>lua MiniFiles.open()<CR>')
 
     -- Simple and easy statusline.
     --  You could remove this setup call if you don't like it,
