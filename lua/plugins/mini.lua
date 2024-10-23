@@ -30,7 +30,7 @@ return { -- Collection of various small independent plugins/modules
     require('mini.sessions').setup()
 
     -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-starter.md
-    require('mini.starter').setup()
+    -- require('mini.starter').setup()
 
     -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-tabline.md
     require('mini.tabline').setup()
@@ -45,8 +45,8 @@ return { -- Collection of various small independent plugins/modules
     require('mini.cursorword').setup()
 
     -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-files.md
-    require('mini.files').setup()
-    vim.keymap.set('n', '<C-n>', '<CMD>lua MiniFiles.open()<CR>')
+    -- require('mini.files').setup()
+    -- vim.keymap.set('n', '<C-n>', '<CMD>lua MiniFiles.open()<CR>')
 
     -- Simple and easy statusline.
     --  You could remove this setup call if you don't like it,
