@@ -95,12 +95,6 @@ return { -- Highlight, edit, and navigate code
       },
       swap = {
         enable = true,
-        swap_next = {
-          ['<leader>a'] = '@parameter.inner',
-        },
-        swap_previous = {
-          ['<leader>A'] = '@parameter.inner',
-        },
       },
     },
   },
