@@ -93,9 +93,6 @@ return { -- Highlight, edit, and navigate code
           ['[]'] = '@class.outer',
         },
       },
-      swap = {
-        enable = true,
-      },
     },
   },
   dependencies = {
