@@ -12,7 +12,8 @@ local opts = { noremap = true, silent = true }
 keymap.set('n', 'j', 'gj', opts)
 keymap.set('n', 'k', 'gk', opts)
 
--- in visual mode move the current selected up or down
+-- in visual mode move the current selected up or downpplications/Postgres.app/Contents/Versions/17/bin/psql" -p5432 "duat_db"
+-- "
 keymap.set('v', 'J', ":m '>+1<CR>gv=gv", opts)
 keymap.set('v', 'K', ":m '<-2<CR>gv=gv", opts)
 
