@@ -165,7 +165,7 @@ return { -- LSP Configuration & Plugins
       }
       vim.lsp.buf.execute_command(params)
     end
-
+    local nvim_lsp = require 'lspconfig'
     local servers = {
       -- clangd = {},
       gopls = {
@@ -197,6 +197,7 @@ return { -- LSP Configuration & Plugins
             description = 'Organize Imports',
           },
         },
+        root_dir = nvim_lsp.util.root_pattern 'package.json',
       },
       tailwindcss = {},
       cssls = {},
@@ -206,7 +207,7 @@ return { -- LSP Configuration & Plugins
       terraformls = {},
       tflint = {},
       eslint = {},
-      bufls = {},
+      buf_ls = {},
       buf = {},
       protolint = {},
       taplo = {},
@@ -251,6 +252,9 @@ return { -- LSP Configuration & Plugins
           },
         },
       },
+      denols = {
+        root_dir = nvim_lsp.util.root_pattern 'deno.json',
+      },
     }
 
     -- Ensure the servers and tools above are installed
@@ -276,7 +280,7 @@ return { -- LSP Configuration & Plugins
       'terraformls',
       'cssmodules_ls',
       'css-variables-language-server',
-      'bufls',
+      'buf_ls',
       'buf',
       'taplo',
       'goimports',
@@ -288,6 +292,7 @@ return { -- LSP Configuration & Plugins
       'sqlfmt',
       'sqls',
       'astro',
+      'denols',
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
