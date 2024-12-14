@@ -197,7 +197,9 @@ return { -- LSP Configuration & Plugins
             description = 'Organize Imports',
           },
         },
-        root_dir = nvim_lsp.util.root_pattern 'package.json',
+        settings = {
+          root_dir = nvim_lsp.util.root_pattern 'package.json',
+        },
       },
       tailwindcss = {},
       cssls = {},
@@ -207,7 +209,6 @@ return { -- LSP Configuration & Plugins
       terraformls = {},
       tflint = {},
       eslint = {},
-      buf_ls = {},
       buf = {},
       protolint = {},
       taplo = {},
@@ -253,7 +254,9 @@ return { -- LSP Configuration & Plugins
         },
       },
       denols = {
-        root_dir = nvim_lsp.util.root_pattern 'deno.json',
+        settings = {
+          root_dir = nvim_lsp.util.root_pattern 'deno.json',
+        },
       },
     }
 
@@ -280,7 +283,6 @@ return { -- LSP Configuration & Plugins
       'terraformls',
       'cssmodules_ls',
       'css-variables-language-server',
-      'buf_ls',
       'buf',
       'taplo',
       'goimports',
