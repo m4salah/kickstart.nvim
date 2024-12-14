@@ -24,7 +24,7 @@ return { -- Collection of various small independent plugins/modules
     require('mini.indentscope').setup()
 
     -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-pairs.md
-    require('mini.pairs').setup()
+    -- require('mini.pairs').setup()
 
     -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-sessions.md
     require('mini.sessions').setup()
