@@ -84,12 +84,13 @@ return { -- Fuzzy Finder (files, lsp, etc)
       pickers = {
         live_grep = {
           file_ignore_patterns = { 'node_modules', '.git', '.venv' },
-          hidden = true,
-          no_ignore = true,
-          additional_arguement = '--ignore-file ~/.config/nvim/.ignore',
+          additional_args = function(_)
+            return { '--hidden' }
+          end,
         },
         find_files = {
           file_ignore_patterns = { 'node_modules', '.git', '.venv' },
+          hidden = true,
         },
       },
     }
@@ -105,18 +106,10 @@ return { -- Fuzzy Finder (files, lsp, etc)
     vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
     -- vim.keymap.set('n', '<leader>sh', '<CMD>Telescope harpoon marks<CR>', { desc = '[S]earch [H]arpoon' })
     vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
-    vim.keymap.set('n', '<leader>sf', function()
-      builtin.find_files { hidden = true, file_ignore_patterns = { 'node_modules', '.git', '.venv' }, no_ignore = true }
-    end, { desc = '[S]earch [F]iles' })
+    vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
     vim.keymap.set('n', '<leader>ss', builtin.lsp_document_symbols, { desc = '[S]earch [S]ymbols Telescope' })
     vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
-    vim.keymap.set('n', '<leader>sg', function()
-      require('telescope').extensions.live_grep_args.live_grep_args {
-        file_ignore_patterns = { 'node_modules', '.git', '.venv' },
-        hidden = true,
-        no_ignore = true,
-      }
-    end, { desc = '[S]earch by [G]rep' })
+    vim.keymap.set('n', '<leader>sg', require('telescope').extensions.live_grep_args.live_grep_args, { desc = '[S]earch by [G]rep' })
     vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
     vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
     vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
