@@ -62,19 +62,53 @@ return { -- Collection of various small independent plugins/modules
 
     -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-files.md
     require('mini.files').setup()
-    vim.keymap.set('n', '<leader>ff', '<CMD>lua MiniFiles.open()<CR>')
+    vim.keymap.set('n', '<C-n>', function()
+      local buf_name = vim.api.nvim_buf_get_name(0)
+      local path = vim.fn.filereadable(buf_name) == 1 and buf_name or vim.fn.getcwd()
+      MiniFiles.open(path)
+      MiniFiles.reveal_cwd()
+    end, { desc = 'Open Mini Files' })
 
-    --  Check out: https://github.com/echasnovski/mini.nvim
+    -- # Create mapping to show/hide dot-files ~
+    --
+    -- Create an autocommand for `MiniFilesBufferCreate` event which calls
+    -- |MiniFiles.refresh()| with explicit `content.filter` functions: >lua
+    local show_dotfiles = true
+
+    local filter_show = function(fs_entry)
+      return true
+    end
+
+    local filter_hide = function(fs_entry)
+      return not vim.startswith(fs_entry.name, '.')
+    end
+
+    local toggle_dotfiles = function()
+      show_dotfiles = not show_dotfiles
+      local new_filter = show_dotfiles and filter_show or filter_hide
+      MiniFiles.refresh { content = { filter = new_filter } }
+    end
+
+    vim.api.nvim_create_autocmd('User', {
+      pattern = 'MiniFilesBufferCreate',
+      callback = function(args)
+        local buf_id = args.data.buf_id
+        -- Tweak left-hand side of mapping to your liking
+        vim.keymap.set('n', 'g.', toggle_dotfiles, { buffer = buf_id })
+      end,
+    })
+
     local map_split = function(buf_id, lhs, direction)
       local rhs = function()
         -- Make new window and set it as target
-        local new_target_window
-        vim.api.nvim_win_call(MiniFiles.get_target_window(), function()
+        local cur_target = MiniFiles.get_explorer_state().target_window
+        local new_target = vim.api.nvim_win_call(cur_target, function()
           vim.cmd(direction .. ' split')
-          new_target_window = vim.api.nvim_get_current_win()
+          return vim.api.nvim_get_current_win()
         end)
 
-        MiniFiles.set_target_window(new_target_window)
+        MiniFiles.set_target_window(new_target)
+        MiniFiles.go_in()
       end
 
       -- Adding `desc` will result into `show_help` entries
