@@ -61,7 +61,11 @@ return { -- Collection of various small independent plugins/modules
     end
 
     -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-files.md
-    require('mini.files').setup()
+    require('mini.files').setup {
+      mappings = {
+        go_in_plus = '<CR>', -- open file & close filetree
+      },
+    }
     vim.keymap.set('n', '<C-n>', function()
       local buf_name = vim.api.nvim_buf_get_name(0)
       local path = vim.fn.filereadable(buf_name) == 1 and buf_name or vim.fn.getcwd()
@@ -109,6 +113,7 @@ return { -- Collection of various small independent plugins/modules
 
         MiniFiles.set_target_window(new_target)
         MiniFiles.go_in()
+        MiniFiles.close()
       end
 
       -- Adding `desc` will result into `show_help` entries
@@ -123,6 +128,21 @@ return { -- Collection of various small independent plugins/modules
         -- Tweak keys to your liking
         map_split(buf_id, 'gs', 'belowright horizontal')
         map_split(buf_id, 'gv', 'belowright vertical')
+      end,
+    })
+
+    -- Toggle preview
+    local toggle_preview = function()
+      MiniFiles.config.windows.preview = not MiniFiles.config.windows.preview
+      MiniFiles.refresh {}
+    end
+
+    vim.api.nvim_create_autocmd('User', {
+      pattern = 'MiniFilesBufferCreate',
+      callback = function(args)
+        local buf_id = args.data.buf_id
+        -- Tweak left-hand side of mapping to your liking
+        vim.keymap.set('n', 'gp', toggle_preview, { buffer = buf_id })
       end,
     })
   end,
