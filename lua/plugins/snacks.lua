@@ -1,6 +1,12 @@
 return {
   'folke/snacks.nvim',
   opts = {
+    indent = {
+      enabled = true,
+    },
+    rename = {
+      enabled = true,
+    },
     lazygit = {
       enabled = true,
     },

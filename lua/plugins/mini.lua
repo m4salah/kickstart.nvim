@@ -126,8 +126,8 @@ return { -- Collection of various small independent plugins/modules
       callback = function(args)
         local buf_id = args.data.buf_id
         -- Tweak keys to your liking
-        map_split(buf_id, 'gs', 'belowright horizontal')
-        map_split(buf_id, 'gv', 'belowright vertical')
+        map_split(buf_id, '<C-s>', 'belowright horizontal')
+        map_split(buf_id, '<C-v>', 'belowright vertical')
       end,
     })
 
@@ -143,6 +143,14 @@ return { -- Collection of various small independent plugins/modules
         local buf_id = args.data.buf_id
         -- Tweak left-hand side of mapping to your liking
         vim.keymap.set('n', 'gp', toggle_preview, { buffer = buf_id })
+      end,
+    })
+
+    -- integrate with snack rename
+    vim.api.nvim_create_autocmd('User', {
+      pattern = 'MiniFilesActionRename',
+      callback = function(event)
+        Snacks.rename.on_rename_file(event.data.from, event.data.to)
       end,
     })
   end,
