@@ -34,9 +34,6 @@ return { -- Autoformat
       -- markdown
       markdown = { 'markdownlint' },
 
-      -- protobuf files
-      proto = { 'buf' },
-
       -- terraform
       terraform = { 'terraform_fmt' },
 

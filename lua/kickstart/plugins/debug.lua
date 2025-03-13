@@ -67,6 +67,7 @@ return {
     },
   },
   config = function()
+    require('dap.ext.vscode').load_launchjs()
     local dap = require 'dap'
     local dapui = require 'dapui'
     local js_based_languages = {
@@ -89,7 +90,7 @@ return {
         },
         -- Debug nodejs processes (make sure to add --inspect when you run the process)
         {
-          type = 'node',
+          type = 'pwa-node',
           request = 'attach',
           name = 'Attach',
           processId = require('dap.utils').pick_process,
@@ -122,6 +123,17 @@ return {
           protocol = 'inspector',
           sourceMaps = true,
           userDataDir = false,
+        },
+        {
+          name = 'Debug Nest.js In Nx monorepo App',
+          type = 'pwa-node',
+          request = 'launch',
+          runtimeExecutable = 'npx',
+          cwd = '${workspaceFolder}/apps/${input:appName}',
+          runtimeArgs = { 'nx', 'run', '${input:appName}:serve' },
+          skipFiles = { '<node_internals>/**' },
+          outFiles = { '${workspaceFolder}/dist/apps/${input:appName}/**/*.js' },
+          console = 'integratedTerminal',
         },
         -- Divider for the launch.json derived configs
         {
