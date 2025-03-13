@@ -11,7 +11,7 @@ return { -- Linting
       'eslint_d',
       'tflint',
       'markdownlint',
-      'protolint',
+      'buf',
     }
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
