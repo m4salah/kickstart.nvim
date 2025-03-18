@@ -2,6 +2,16 @@
 require 'keymaps'
 require 'options'
 
+vim.api.nvim_create_autocmd({ 'BufReadPost', 'BufNewFile' }, {
+  pattern = {
+    'Fastfile',
+    'Appfile',
+    'Matchfile',
+    'Pluginfile',
+  },
+  command = 'set filetype=ruby',
+})
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
