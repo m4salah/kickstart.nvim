@@ -12,6 +12,9 @@ local opts = { noremap = true, silent = true }
 keymap.set('n', 'j', 'gj', opts)
 keymap.set('n', 'k', 'gk', opts)
 
+-- Go to definition in split vertically
+keymap.set('n', 'gD', '<C-w><C-v>', opts)
+
 -- in visual mode move the current selected up or downpplications/Postgres.app/Contents/Versions/17/bin/psql" -p5432 "duat_db"
 -- "
 keymap.set('v', 'J', ":m '>+1<CR>gv=gv", opts)
