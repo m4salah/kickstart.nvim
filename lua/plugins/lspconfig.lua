@@ -22,7 +22,7 @@ return { -- LSP Configuration & Plugins
 
       -- Useful status updates for LSP.
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', opts = {} },
+      { 'j-hui/fidget.nvim',       opts = {} },
     },
     config = function()
       vim.api.nvim_create_autocmd('LspAttach', {
@@ -216,7 +216,8 @@ return { -- LSP Configuration & Plugins
               validate = true,
               schemas = {
                 ['https://json.schemastore.org/github-workflow.json'] = '.github/workflows/*',
-                ['https://raw.githubusercontent.com/docker/compose/master/compose/config/compose_spec.json'] = 'docker-compose*.{yml,yaml}',
+                ['https://raw.githubusercontent.com/docker/compose/master/compose/config/compose_spec.json'] =
+                'docker-compose*.{yml,yaml}',
               },
               format = {
                 enable = true,

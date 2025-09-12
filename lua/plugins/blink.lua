@@ -34,32 +34,35 @@ return {
       -- Adjusts spacing to ensure icons are aligned
       nerd_font_variant = 'mono',
     },
+
+    cmdline = {
+      keymap = { preset = 'inherit' },
+      completion = { menu = { auto_show = true, } },
+      sources = function()
+        local type = vim.fn.getcmdtype()
+        -- Search forward and backward
+        if type == '/' or type == '?' then return { 'buffer' } end
+        -- Commands
+        if type == ':' or type == '@' then return { 'cmdline' } end
+        return {}
+      end,
+    },
+
     completion = {
       menu = {
         draw = {
           columns = { { 'kind_icon', 'label', 'label_description', gap = 1 }, { 'kind' } },
         },
       },
+
     },
 
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
     sources = {
-      default = { 'lsp', 'path', 'snippets', 'buffer', 'dictionary' },
+      default = { 'lsp', 'path', 'snippets', 'buffer', 'cmdline', 'dictionary' },
       -- By default, we choose providers for the cmdline based on the current cmdtype
       -- You may disable cmdline completions by replacing this with an empty table
-      cmdline = function()
-        local type = vim.fn.getcmdtype()
-        -- Search forward and backward
-        if type == '/' or type == '?' then
-          return { 'buffer' }
-        end
-        -- Commands
-        if type == ':' or type == '@' then
-          return { 'cmdline' }
-        end
-        return {}
-      end,
       providers = {
         dictionary = {
           module = 'blink-cmp-dictionary',

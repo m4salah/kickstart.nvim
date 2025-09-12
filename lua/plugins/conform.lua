@@ -41,7 +41,7 @@ return { -- Autoformat
       hcl = { 'terragrunt_hclfmt' },
 
       -- yaml
-      yaml = { 'yamlls' },
+      yaml = { 'prettierd', 'prettier' },
 
       -- golang
       go = { 'goimports', 'gofmt', 'golines' },
