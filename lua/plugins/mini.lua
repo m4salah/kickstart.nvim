@@ -1,5 +1,5 @@
 return { -- Collection of various small independent plugins/modules
-  'echasnovski/mini.nvim',
+  'nvim-mini/mini.nvim',
   config = function()
     -- icons
     require('mini.icons').setup()
@@ -43,6 +43,9 @@ return { -- Collection of various small independent plugins/modules
 
     -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-cursorword.md
     require('mini.cursorword').setup()
+
+    -- https://github.com/nvim-mini/mini.pick
+    require('mini.pick').setup()
 
     -- Simple and easy statusline.
     --  You could remove this setup call if you don't like it,

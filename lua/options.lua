@@ -68,6 +68,9 @@ vim.opt.ts = 4
 vim.opt.sw = 4
 vim.opt.sts = 2
 
+-- make the hover rounded
+vim.o.winborder = 'rounded'
+
 -- add support to templ file type
 -- https://templ.guide/commands-and-tools/ide-support/#neovim--050
 vim.filetype.add { extension = { templ = 'templ' } }
