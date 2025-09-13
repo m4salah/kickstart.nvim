@@ -24,6 +24,28 @@ return { -- Linting
       typescriptreact = { 'eslint_d' },
       terraform = { 'tflint' },
     }
+    local eslint = lint.linters.eslint_d
+
+    eslint.args = {
+      '--no-warn-ignored',
+      '--format',
+      'json',
+      '--stdin',
+      '--stdin-filename',
+      function()
+        return vim.api.nvim_buf_get_name(0)
+      end,
+    }
+
+    lint.linters.eslint_d = require('lint.util').wrap(lint.linters.eslint_d, function(diagnostic)
+      -- try to ignore "No ESLint configuration found" error
+      -- if diagnostic.message:find("Error: No ESLint configuration found") then -- old version
+      -- update: 20240814, following is working
+      if diagnostic.message:find 'Error: Could not find config file' then
+        return nil
+      end
+      return diagnostic
+    end)
 
     -- To allow other plugins to add linters to require('lint').linters_by_ft,
     -- instead set linters_by_ft like this:
