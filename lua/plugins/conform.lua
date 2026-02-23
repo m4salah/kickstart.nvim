@@ -48,18 +48,21 @@ return { -- Autoformat
       templ = { 'templ' },
 
       -- java/typescript prettier
-      json = { 'prettierd', 'prettier' },
       htmldjango = { 'djlint' },
-      javascript = { 'prettierd', 'prettier' },
-      typescript = { 'prettierd', 'prettier' },
-      javascriptreact = { 'prettierd', 'prettier' },
-      typescriptreact = { 'prettierd', 'prettier' },
+      json = { 'biome' },
+      javascript = { "biome", "biome-check" },
+      javascriptreact = { "biome", "biome-check" },
+      typescript = { "biome", "biome-check" },
+      typescriptreact = { "biome", "biome-check" },
 
       -- sql
       sql = { 'sql_formatter' },
 
       -- prisma
       prisma = { 'prismaFmt' },
+
+      -- http
+      http = { 'kulala-fmt' },
     },
   },
 }

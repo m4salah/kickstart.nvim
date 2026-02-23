@@ -1,3 +1,18 @@
+-- Define a function to organize imports for the current buffer
+local function organize_imports()
+  vim.lsp.buf.code_action({
+    context = { only = { "source.organizeImports" }, diagnostics = vim.lsp.diagnostic.get_line_diagnostics() },
+    apply = true,
+  })
+  vim.lsp.buf.code_action({
+    context = { only = { "source.format" }, diagnostics = vim.lsp.diagnostic.get_line_diagnostics() },
+    apply = true,
+  })
+end
+
+-- Create a user command :OrganizeImports
+vim.api.nvim_create_user_command('OrganizeImports', organize_imports, { desc = 'Organize Imports' })
+
 return { -- LSP Configuration & Plugins
   {
     -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
@@ -162,42 +177,16 @@ return { -- LSP Configuration & Plugins
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
-        denols = {
-          root_dir = nvim_lsp.util.root_pattern 'deno.json',
-          init_options = {
-            lint = true,
-            unstable = true,
-            suggest = {
-              imports = {
-                hosts = {
-                  ['https://deno.land'] = true,
-                  ['https://cdn.nest.land'] = true,
-                  ['https://crux.land'] = true,
-                },
-              },
-            },
-          },
-          on_attach = function()
-            local active_clients = vim.lsp.get_clients()
-            for _, client in pairs(active_clients) do
-              -- stop ts_ls if denols is already active
-              if client.name == 'ts_ls' then
-                client.stop()
-              end
-            end
-          end,
-        },
         ts_ls = {
           on_attach = function(client, bufnr)
             vim.keymap.set('n', '<leader>ro', function()
-              vim.lsp.buf.execute_command {
+              vim.lsp.buf.code_action {
                 command = '_typescript.organizeImports',
                 arguments = { vim.fn.expand '%:p' },
               }
             end, { buffer = bufnr, remap = false, desc = '[O]rganize Imports' })
           end,
         },
-
         tailwindcss = {},
         cssls = {},
         somesass_ls = {},
@@ -210,6 +199,7 @@ return { -- LSP Configuration & Plugins
         },
         taplo = {},
         templ = {},
+        biome = {},
         yamlls = {
           settings = {
             yaml = {
