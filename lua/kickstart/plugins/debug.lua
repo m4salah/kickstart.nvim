@@ -67,7 +67,6 @@ return {
     },
   },
   config = function()
-    require('dap.ext.vscode').load_launchjs()
     local dap = require 'dap'
     local dapui = require 'dapui'
     local js_based_languages = {
