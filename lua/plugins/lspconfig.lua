@@ -27,6 +27,7 @@ return { -- LSP Configuration & Plugins
     },
   },
   { 'Bilal2453/luvit-meta', lazy = true },
+  { "b0o/schemastore.nvim" },
   {
     'neovim/nvim-lspconfig',
     dependencies = {
@@ -170,6 +171,14 @@ return { -- LSP Configuration & Plugins
           cargo = {
             allFeatures = true,
           },
+        },
+        jsonls = {
+          settings = {
+            json = {
+              schemas = require('schemastore').json.schemas(),
+              validate = { enable = true },
+            },
+          }
         },
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --

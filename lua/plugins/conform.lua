@@ -49,7 +49,7 @@ return { -- Autoformat
 
       -- java/typescript prettier
       htmldjango = { 'djlint' },
-      json = { 'biome' },
+      json = { 'biome', 'biome-check' },
       javascript = { "biome", "biome-check" },
       javascriptreact = { "biome", "biome-check" },
       typescript = { "biome", "biome-check" },
