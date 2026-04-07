@@ -1,7 +1,7 @@
 return { -- Fuzzy Finder (files, lsp, etc)
   'nvim-telescope/telescope.nvim',
   event = 'VimEnter',
-  branch = '0.1.x',
+  version = '*',
   dependencies = {
     'nvim-lua/plenary.nvim',
     { -- If encountering errors, see telescope-fzf-native README for installation instructions
@@ -20,7 +20,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
     { 'nvim-telescope/telescope-ui-select.nvim' },
 
     -- Useful for getting pretty icons, but requires a Nerd Font.
-    { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+    { 'nvim-tree/nvim-web-devicons',            enabled = vim.g.have_nerd_font },
     {
       'nvim-telescope/telescope-frecency.nvim',
       config = function()
@@ -31,7 +31,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
       'nvim-telescope/telescope-live-grep-args.nvim',
       -- This will not install any breaking changes.
       -- For major updates, this must be adjusted manually.
-      version = '^1.0.0',
+      version = '*',
     },
   },
   config = function()
@@ -109,7 +109,8 @@ return { -- Fuzzy Finder (files, lsp, etc)
     vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
     vim.keymap.set('n', '<leader>ss', builtin.lsp_document_symbols, { desc = '[S]earch [S]ymbols Telescope' })
     vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
-    vim.keymap.set('n', '<leader>sg', require('telescope').extensions.live_grep_args.live_grep_args, { desc = '[S]earch by [G]rep' })
+    vim.keymap.set('n', '<leader>sg', require('telescope').extensions.live_grep_args.live_grep_args,
+      { desc = '[S]earch by [G]rep' })
     vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
     vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
     vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
@@ -118,8 +119,10 @@ return { -- Fuzzy Finder (files, lsp, etc)
     vim.keymap.set('n', '<leader>sp', '<CMD>Telescope frecency<CR>', { desc = '[S]earch [P]aths' })
 
     -- git worktree commands
-    vim.keymap.set('n', '<Leader>sr', "<CMD>lua require('telescope').extensions.git_worktree.git_worktrees()<CR>", { desc = 'List git worktrees' })
-    vim.keymap.set('n', '<Leader>sR', "<CMD>lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>", { desc = 'Create new git worktree' })
+    vim.keymap.set('n', '<Leader>sr', "<CMD>lua require('telescope').extensions.git_worktree.git_worktrees()<CR>",
+      { desc = 'List git worktrees' })
+    vim.keymap.set('n', '<Leader>sR', "<CMD>lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>",
+      { desc = 'Create new git worktree' })
 
     -- search todos
     vim.keymap.set('n', '<leader>st', '<CMD>TodoTelescope<CR>', { desc = '[S] [T]odos' })

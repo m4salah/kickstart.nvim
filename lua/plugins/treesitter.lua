@@ -2,50 +2,13 @@ return { -- Highlight, edit, and navigate code
   {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
+    branch = 'main',
     opts = {
       injections = {
         enable = true,
       },
-      ensure_installed = {
-        'diff',
-        'bash',
-        'c',
-        'html',
-        'lua',
-        'luadoc',
-        'markdown',
-        'markdown_inline',
-        'vim',
-        'vimdoc',
-        'go',
-        'typescript',
-        'javascript',
-        'tsx',
-        'fish',
-        'css',
-        'jsdoc',
-        'json',
-        'terraform',
-        'hcl',
-        'yaml',
-        'toml',
-        'scss',
-        'rust',
-        'templ',
-        'htmldjango',
-        'astro',
-        'prisma',
-      },
       -- Autoinstall languages that are not installed
       auto_install = true,
-      highlight = {
-        enable = true,
-        -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
-        --  If you are experiencing weird indenting issues, add the language to
-        --  the list of additional_vim_regex_highlighting and disabled languages for indent.
-        additional_vim_regex_highlighting = { 'ruby' },
-      },
-      indent = { enable = true, disable = { 'ruby' } },
       incremental_selection = {
         enable = true,
         keymaps = {
@@ -98,30 +61,80 @@ return { -- Highlight, edit, and navigate code
     },
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
+      branch = 'main',
     },
-    config = function(_, opts)
-      -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
+    -- config = function(_, opts)
+    --   -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
+    --
+    --   ---@diagnostic disable-next-line: missing-fields
+    --   require('nvim-treesitter.configs').setup(opts)
+    --
+    --   local ts_repeat_move = require 'nvim-treesitter.textobjects.repeatable_move'
+    --
+    --   -- Repeat movement with ; and ,
+    --   -- ensure ; goes forward and , goes backward regardless of the last direction
+    --   vim.keymap.set({ 'n', 'x', 'o' }, ';', ts_repeat_move.repeat_last_move_next)
+    --
+    --   -- Optionally, make builtin f, F, t, T also repeatable with ; and ,
+    --   vim.keymap.set({ 'n', 'x', 'o' }, 'f', ts_repeat_move.builtin_f_expr, { expr = true, silent = true })
+    --   vim.keymap.set({ 'n', 'x', 'o' }, 'F', ts_repeat_move.builtin_F_expr, { expr = true, silent = true })
+    --   vim.keymap.set({ 'n', 'x', 'o' }, 't', ts_repeat_move.builtin_t_expr, { expr = true, silent = true })
+    --   vim.keymap.set({ 'n', 'x', 'o' }, 'T', ts_repeat_move.builtin_T_expr, { expr = true, silent = true })
+    --   -- There are additional nvim-treesitter modules that you can use to interact
+    --   -- with nvim-treesitter. You should go explore a few and see what interests you:
+    --   --
+    --   --    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
+    --   --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
+    --   --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+    -- end,
 
-      ---@diagnostic disable-next-line: missing-fields
-      require('nvim-treesitter.configs').setup(opts)
-
-      local ts_repeat_move = require 'nvim-treesitter.textobjects.repeatable_move'
-
-      -- Repeat movement with ; and ,
-      -- ensure ; goes forward and , goes backward regardless of the last direction
-      vim.keymap.set({ 'n', 'x', 'o' }, ';', ts_repeat_move.repeat_last_move_next)
-
-      -- Optionally, make builtin f, F, t, T also repeatable with ; and ,
-      vim.keymap.set({ 'n', 'x', 'o' }, 'f', ts_repeat_move.builtin_f_expr, { expr = true, silent = true })
-      vim.keymap.set({ 'n', 'x', 'o' }, 'F', ts_repeat_move.builtin_F_expr, { expr = true, silent = true })
-      vim.keymap.set({ 'n', 'x', 'o' }, 't', ts_repeat_move.builtin_t_expr, { expr = true, silent = true })
-      vim.keymap.set({ 'n', 'x', 'o' }, 'T', ts_repeat_move.builtin_T_expr, { expr = true, silent = true })
-      -- There are additional nvim-treesitter modules that you can use to interact
-      -- with nvim-treesitter. You should go explore a few and see what interests you:
-      --
-      --    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
-      --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
-      --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+    init = function()
+      vim.api.nvim_create_autocmd('FileType', {
+        callback = function()
+          -- Enable treesitter highlighting and disable regex syntax
+          pcall(vim.treesitter.start)
+          -- Enable treesitter-based indentation
+          vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+        end,
+      })
+      local ensureInstalled = {
+        'diff',
+        'bash',
+        'c',
+        'html',
+        'lua',
+        'luadoc',
+        'markdown',
+        'markdown_inline',
+        'vim',
+        'vimdoc',
+        'go',
+        'typescript',
+        'javascript',
+        'tsx',
+        'fish',
+        'css',
+        'jsdoc',
+        'json',
+        'terraform',
+        'hcl',
+        'yaml',
+        'toml',
+        'scss',
+        'rust',
+        'templ',
+        'htmldjango',
+        'astro',
+        'prisma',
+        -- ... your parsers
+      }
+      local alreadyInstalled = require('nvim-treesitter.config').get_installed()
+      local parsersToInstall = vim.iter(ensureInstalled)
+          :filter(function(parser)
+            return not vim.tbl_contains(alreadyInstalled, parser)
+          end)
+          :totable()
+      require('nvim-treesitter').install(parsersToInstall)
     end,
   },
   {
