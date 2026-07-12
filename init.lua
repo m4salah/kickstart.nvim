@@ -2,6 +2,12 @@
 require 'keymaps'
 require 'options'
 
+vim.filetype.add({
+  extension = {
+    xcstrings = 'json',
+  },
+})
+
 vim.api.nvim_create_autocmd({ 'BufReadPost', 'BufNewFile' }, {
   pattern = {
     'Fastfile',

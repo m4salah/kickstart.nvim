@@ -63,31 +63,6 @@ return { -- Highlight, edit, and navigate code
       'nvim-treesitter/nvim-treesitter-textobjects',
       branch = 'main',
     },
-    -- config = function(_, opts)
-    --   -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
-    --
-    --   ---@diagnostic disable-next-line: missing-fields
-    --   require('nvim-treesitter.configs').setup(opts)
-    --
-    --   local ts_repeat_move = require 'nvim-treesitter.textobjects.repeatable_move'
-    --
-    --   -- Repeat movement with ; and ,
-    --   -- ensure ; goes forward and , goes backward regardless of the last direction
-    --   vim.keymap.set({ 'n', 'x', 'o' }, ';', ts_repeat_move.repeat_last_move_next)
-    --
-    --   -- Optionally, make builtin f, F, t, T also repeatable with ; and ,
-    --   vim.keymap.set({ 'n', 'x', 'o' }, 'f', ts_repeat_move.builtin_f_expr, { expr = true, silent = true })
-    --   vim.keymap.set({ 'n', 'x', 'o' }, 'F', ts_repeat_move.builtin_F_expr, { expr = true, silent = true })
-    --   vim.keymap.set({ 'n', 'x', 'o' }, 't', ts_repeat_move.builtin_t_expr, { expr = true, silent = true })
-    --   vim.keymap.set({ 'n', 'x', 'o' }, 'T', ts_repeat_move.builtin_T_expr, { expr = true, silent = true })
-    --   -- There are additional nvim-treesitter modules that you can use to interact
-    --   -- with nvim-treesitter. You should go explore a few and see what interests you:
-    --   --
-    --   --    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
-    --   --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
-    --   --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
-    -- end,
-
     init = function()
       vim.api.nvim_create_autocmd('FileType', {
         callback = function()
@@ -126,7 +101,9 @@ return { -- Highlight, edit, and navigate code
         'htmldjango',
         'astro',
         'prisma',
-        -- ... your parsers
+        'editorconfig',
+        'ruby',
+        'swift'
       }
       local alreadyInstalled = require('nvim-treesitter.config').get_installed()
       local parsersToInstall = vim.iter(ensureInstalled)
@@ -158,4 +135,8 @@ return { -- Highlight, edit, and navigate code
       })
     end,
   },
+  {
+    "bezhermoso/tree-sitter-ghostty",
+    build = "make nvim_install",
+  }
 }

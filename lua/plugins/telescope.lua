@@ -89,7 +89,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
           end,
         },
         find_files = {
-          file_ignore_patterns = { 'node_modules', '.git', '.venv' },
+          file_ignore_patterns = { 'node_modules', '.git/', '.venv', },
           hidden = true,
         },
       },

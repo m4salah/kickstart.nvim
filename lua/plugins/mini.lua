@@ -1,3 +1,23 @@
+vim.api.nvim_create_autocmd("User", {
+  pattern = "MiniFilesBufferCreate",
+  callback = function(args)
+    local buf_id = args.data.buf_id
+
+    -- Map 'gO' to reveal the entry under the cursor in macOS Finder
+    vim.keymap.set("n", "gO", function()
+      -- Get the filesystem entry under the cursor
+      local entry = MiniFiles.get_fs_entry()
+      if not entry then
+        vim.notify("No valid file or directory under cursor", vim.log.levels.WARN)
+        return
+      end
+
+      -- Execute the macOS open command to reveal it (-R flag)
+      vim.fn.jobstart({ "open", "-R", entry.path }, { detach = true })
+    end, { buffer = buf_id, desc = "Reveal in Finder" })
+  end,
+})
+
 return { -- Collection of various small independent plugins/modules
   'nvim-mini/mini.nvim',
   config = function()
