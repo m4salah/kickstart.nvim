@@ -4,12 +4,11 @@ return {
     version = '*', -- (recommended) only required with prebuilt binaries
 
     -- download prebuilt binaries from github releases
-    dependencies = 'saghen/blink.download',
-    -- OR build from source, requires nightly:
-    -- https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
-    -- build = 'cargo build --release',
-    -- If you use nix, you can build from source using latest nightly rust with:
-    -- build = 'nix run .#build-plugin',
+    dependencies = 'saghen/blink.lib',
+    -- download prebuilt binaries from github releases, must be on a versioned release
+    build = function()
+      require('blink.pairs').build():pwait(60000)
+    end,
 
     --- @module 'blink.pairs'
     --- @type blink.pairs.Config
@@ -56,7 +55,7 @@ return {
         },
       },
       debug = false,
-    }
+    },
   },
   {
     'saghen/blink.cmp',
@@ -97,13 +96,17 @@ return {
 
       cmdline = {
         keymap = { preset = 'inherit' },
-        completion = { menu = { auto_show = true, } },
+        completion = { menu = { auto_show = true } },
         sources = function()
           local type = vim.fn.getcmdtype()
           -- Search forward and backward
-          if type == '/' or type == '?' then return { 'buffer' } end
+          if type == '/' or type == '?' then
+            return { 'buffer' }
+          end
           -- Commands
-          if type == ':' or type == '@' then return { 'cmdline' } end
+          if type == ':' or type == '@' then
+            return { 'cmdline' }
+          end
           return {}
         end,
       },
@@ -114,7 +117,6 @@ return {
             columns = { { 'kind_icon', 'label', 'label_description', gap = 1 }, { 'kind' } },
           },
         },
-
       },
 
       -- Default list of enabled providers defined so that you can extend it
@@ -135,5 +137,5 @@ return {
       },
     },
     opts_extend = { 'sources.default' },
-  }
+  },
 }
